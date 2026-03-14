@@ -1,72 +1,576 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TEAM !!!! Guild</title>
-<style>
-body{margin:0;font-family:Arial,sans-serif;background:#0b0f1a;color:white;}
-header{text-align:center;padding:50px;background:linear-gradient(135deg,#111827,#1f2937);}
-h1{font-size:48px;margin:0;}
-.tagline{opacity:.8;margin-top:5px;}
-section{max-width:900px;margin:auto;padding:40px 20px;}
-.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;margin-top:20px;}
-video{width:100%;border-radius:8px;}
-.card{background:#111827;padding:20px;border-radius:10px;margin-top:20px;}
-button{padding:12px 20px;border:none;border-radius:6px;background:#38bdf8;color:black;font-weight:bold;cursor:pointer;}
-button:hover{background:#0ea5e9;}
-footer{text-align:center;padding:20px;opacity:.6;margin-top:20px;}
-a{color:#38bdf8;text-decoration:none;}
-a:hover{text-decoration:underline;}
-</style>
-</head>
-<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Guild Test - Elite Recruitment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<header>
-<h1>TEAM !!!! Guild</h1>
-<p class="tagline">Our best clips and highlights</p>
-</header>
+        :root {
+            --primary-orange: #FF6200;
+            --primary-red: #FF1744;
+            --dark-bg: #0a0a0a;
+            --dark-card: #1a1a1a;
+            --neon-glow: 0 0 20px rgba(255, 98, 0, 0.5);
+            --neon-glow-red: 0 0 20px rgba(255, 23, 68, 0.5);
+        }
 
-<section id="videos">
-<h2>Featured Videos</h2>
-<div class="video-grid">
-<div>
-<video controls>
-<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-<p>Epic Win #1</p>
-</div>
-<div>
-<video controls>
-<source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-<p>Top Gameplay #2</p>
-</div>
-<div>
-<video controls>
-<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-<p>Best Moments #3</p>
-</div>
-</div>
-</section>
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a1a1a 100%);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-<section id="info">
-<h2>Guild Info</h2>
-<div class="card">
-<p>Leader: Stuffy !!!!</p>
-<p>Acting-leader-Leader: Vicky !!!!</p>
-<p>Officer: Golu !!!!</p>
-<p>Contact us on <a href="https://discord.gg/mFXs9k3s" target="_blank">Discord</a></p>
-</div>
-</section>
+        /* Particles Background */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
 
-<footer>
-<p>© 2026 TEAM !!!! Guild</p>
-</footer>
+        .particle {
+            position: absolute;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
 
-</body>
-</html>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+            text-shadow: var(--neon-glow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="g1" cx="0.5" cy="0.5"><stop offset="0%" stop-color="%23FF62000f"/><stop offset="50%" stop-color="%23FF17440f"/><stop offset="100%" stop-color="%23000000"/></radialGradient></defs><rect width="1200" height="800" fill="url(%23g1)"/></svg>') center/cover;
+        }
+
+        .hero-content h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px var(--primary-orange)); }
+            to { filter: drop-shadow(0 0 30px var(--primary-red)); }
+        }
+
+        .hero-content p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: var(--neon-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 98, 0, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 98, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 98, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 98, 0, 0); }
+        }
+
+        .guild-logo {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: var(--neon-glow);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--dark-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 98, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 98, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--neon-glow);
+            border-color: var(--primary-orange);
+        }
+
+        .card-leader {
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark-card), rgba(255, 98, 0, 0.1));
+        }
+
+        .leader-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-orange);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 98, 0, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: var(--neon-glow);
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 98, 0, 0.3);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload-label:hover {
+            border-color: var(--primary-orange);
+            background: rgba(255, 98, 0, 0.1);
+        }
+
+        /* Quiz */
+        .quiz-container {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .quiz-question {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .quiz-question h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .quiz-option {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 98, 0, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 98, 0, 0.1);
+            border-color: var(--primary-orange);
+        }
+
+        .quiz-option.selected {
+            background: var(--primary-orange);
+            border-color: var(--primary-red);
+            box-shadow: var(--neon-glow);
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 1rem;
+        }
+
+        /* Buttons */
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--neon-glow);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 98, 0, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Leaderboard */
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--dark-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--neon-glow);
+            margin-top: 2rem;
+        }
+
+        .leaderboard-table th,
+        .leaderboard-table td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 98, 0, 0.2);
+        }
+
+        .leaderboard-table th {
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            font-weight: 700;
+        }
+
+        .leaderboard-table tr:hover {
+            background: rgba(255, 98, 0, 0.1);
+        }
+
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .rank-1 { border-left: 5px solid #FFD700; }
+        .rank-2 { border-left: 5px solid #C0C0C0; }
+        .rank-3 { border-left: 5px solid #CD7F32; }
+
+        /* Contact */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: var(--dark-card);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 98, 0, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            transform: translateY(-3px);
+            box-shadow: var(--neon-glow);
+        }
+
+        .discord-link {
+            background: #5865F2;
+            border-color: rgba(88, 101, 242, 0.5);
+        }
+
+        .discord-link:hover {
+            background: linear-gradient(45deg, #5865F2, #4752C4);
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 5%;
+            background: var(--dark-bg);
+            border-top: 1px solid rgba(255, 98, 0, 0.2);
+            margin-top: 5rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--dark-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .guild-logo {
+                position: static;
+                margin: 2rem auto;
+                width: 120px;
+                height: 120px;
+            }
+
+            .section {
+                padding: 80px 5%;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-red));
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* Success Message */
+        .success-message {
+            position
